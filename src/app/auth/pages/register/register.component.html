@@ -1,0 +1,53 @@
+<div class="grid">
+    <div class="col-12 ">
+        <form action="">
+            <div class="title">
+                <h1 class=" text-center">Sing up</h1>
+            </div>
+            <!-- input username -->
+            <div class="mb-2">
+                <span class="p-input-icon-right">
+                    <i class="pi pi-user"></i>
+                    <input  type="text"
+                            class="border-round" 
+                            pInputText 
+                            placeholder="Username"/>
+                </span>
+            </div>
+            <!-- input email -->
+            <div class="mb-2">
+                <span class="p-input-icon-right">
+                    <i class="pi pi-envelope"></i>
+                    <input  type="email"
+                            class="border-round" 
+                            pInputText 
+                            placeholder="Email"/>
+                </span>
+            </div>
+            <!-- input password -->
+            <div class="mb-2">
+                <p-password [inputStyleClass]="'border-round'"
+                            [styleClass]="'border-round'"
+                            [toggleMask]="true" 
+                            placeholder="Password">
+                </p-password>
+            </div>
+            <!-- Login button -->
+            <div class="flex justify-content-center">
+                <button pButton 
+                        pRipple 
+                        type="button" 
+                        label="Become a member" 
+                        class="p-button-rounded mt-2 w-full">
+                </button>
+            </div>
+        </form>
+        <!-- register link -->
+        <div class="redirect text-center mt-5">
+            Already have an account?
+            <a class="link-register" routerLink="/signin/login">
+                Log in
+            </a>
+        </div>
+    </div>
+</div>

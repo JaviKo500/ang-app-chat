@@ -9,3 +9,76 @@ html, body {
 .text-layout{
     color: var(--text-color);
 }
+
+.border-round{
+    border-radius: 50px !important;
+}
+.border-left{
+    border-top-left-radius: 50px !important;
+    border-bottom-left-radius: 50px !important;
+}
+.border-right{
+    border-top-right-radius: 50px !important;
+    border-bottom-right-radius: 50px !important;
+}
+
+/* login link animations */
+.redirect{
+    font-size: 12px;
+    color: rgba(144, 144, 144, 0.736);
+}
+.link-register{
+    display: inline-block;
+    margin-block: 2px;
+    text-decoration: none;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.87);
+    position: relative;
+}
+
+.link-register::after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+}
+
+.link-register:hover::after{
+    transform: scaleX(1);
+}
+
+/* to users panel component */
+.user-panel{
+    width: 100%;
+    height: 250px !important;
+}
+
+/*  user connect or disconnect  */
+
+.connect{
+    color: rgba(38, 225, 38, 0.758);
+}
+.disconnect{
+    color: rgba(251, 85, 70, 0.759);
+}
+
+
+/* cursors */
+.cursor-pointer{
+    cursor: pointer;
+}
+
+/* tests */
+.border{
+    border: 1px red solid;
+}
+.border2{
+    border: 1px rebeccapurple solid;
+}
