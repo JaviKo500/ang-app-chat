@@ -14,8 +14,7 @@ const routes: Routes = [
         component: HomeMessageComponent
       },
       {
-        // TODO: send id param
-        path: 'chat',
+        path: 'chat/:id',
         component: UserMessageComponent
       }
     ]

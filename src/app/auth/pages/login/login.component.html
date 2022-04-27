@@ -1,6 +1,8 @@
 <div class="grid">
     <div class="col-12 ">
-        <form action="">
+        <form   autocomplete="off"
+                [formGroup]="logInForm"
+                (ngSubmit)="logIn()">
             <div class="title">
                 <h1 class=" text-center">Welcome!</h1>
             </div>
@@ -11,7 +13,8 @@
                     <input  type="email"
                             class="border-round" 
                             pInputText 
-                            placeholder="Email"/>
+                            placeholder="Email"
+                            formControlName="email"/>
                 </span>
             </div>
             <!-- input password -->
@@ -20,16 +23,18 @@
                             [styleClass]="'border-round'"
                             [toggleMask]="true" 
                             [feedback]="false" 
-                            placeholder="Password">
+                            placeholder="Password"
+                            formControlName="password">
                 </p-password>
             </div>
             <!-- Login button -->
             <div class="flex justify-content-center">
                 <button pButton 
                         pRipple 
-                        type="button" 
+                        type="submit" 
                         label="Log In" 
-                        class="p-button-rounded mt-2 w-full">
+                        class="p-button-rounded mt-2 w-full"
+                        [disabled]="logInForm.pending">
                 </button>
             </div>
         </form>

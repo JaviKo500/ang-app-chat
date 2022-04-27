@@ -1,13 +1,13 @@
-<div class="w-full  flex justify-content-center">
-    <div class="w-full user-message cursor-pointer mt-1 grid " routerLink="/inbox/chat" >
+<div class="w-full  flex justify-content-center" *ngIf="user">
+    <div class="w-full user-message cursor-pointer mt-1 grid " [routerLink]="['/inbox/chat/', user.uid]" >
         <div class="col-3 flex align-items-center">
-            <p-avatar label="Ja" shape="circle"></p-avatar>
+            <p-avatar [label]="getIconText()" shape="circle"></p-avatar>
         </div>
         <div class="col-7 flex align-items-center">
-                Javier Gutierrez
+                {{user.name | titlecase}}
         </div>
         <div class="col-2 flex align-items-center">
-                <i class="pi pi-circle-fill" ngClass="connect"></i>
+                <i class="pi pi-circle-fill" [ngClass]="getClassUserState()"></i>
         </div>
     </div>
 </div>

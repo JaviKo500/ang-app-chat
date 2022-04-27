@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ValidateTokenGuard } from './guards/validate-token.guard';
 
 const routes: Routes = [
   {
@@ -8,7 +9,9 @@ const routes: Routes = [
   },
   {
     path: 'inbox',
-    loadChildren: () => import( './inbox/inbox.module' ).then( m => m.InboxModule)
+    loadChildren: () => import( './inbox/inbox.module' ).then( m => m.InboxModule),
+    canActivate: [ ValidateTokenGuard ],
+    canLoad: [ ValidateTokenGuard ],
   },
   {
     path: '**',
