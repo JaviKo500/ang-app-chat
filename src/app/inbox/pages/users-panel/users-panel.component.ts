@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { UserModel } from '../../../models/user.model';
 import { UsersService } from '../../../services/users.service';
+import { SocketService } from '../../../services/socket.service';
 
 @Component({
   selector: 'app-users-panel',
@@ -15,22 +16,26 @@ export class UsersPanelComponent implements OnInit {
   constructor(
     private _router: Router,
     private _authService: AuthService,
+    private _socketService: SocketService,
     private _usersService: UsersService,
   ) { }
 
   ngOnInit(): void {
     this.userLoggedIn = this._authService.userLoggedIn;
-    this.getUsers();
+    this._socketService.onUserConnect()
+      ?.subscribe( res => {        
+        this.getUsers();
+      });
   }
 
   getIconText = (): string => this.userLoggedIn?.name.substring(0,2).toLocaleUpperCase()!;
-  getClassUserState = (): string => this.userLoggedIn?.online ? 'connect': 'disconnect';
-
+  
   getUsers = () => {
+    this.users = [];
     this._usersService.getUsers()
       .subscribe( ok => {        
         if ( ok === true ){
-          this.users = this._usersService.users;
+          this.users = this._usersService.users;          
         } else {
           console.log(ok);
         }
@@ -40,6 +45,8 @@ export class UsersPanelComponent implements OnInit {
   }
   logOut = (): void => {
     this._authService.logOut();
+    this._socketService.userConnect();
+    this._socketService.disconnect();
     this._router.navigateByUrl('/auth');
   }
 

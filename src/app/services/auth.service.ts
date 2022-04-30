@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment.prod';
 import { UserModel } from '../models/user.model';
 import { LogInResponse } from '../models/login-response.model';
 import { of, Observable } from 'rxjs';
+import { SocketService } from './socket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class AuthService {
   private _isAuthenticated: boolean = false;
 
   constructor(
-    private _http: HttpClient
+    private _http: HttpClient,
   ) { }
 
   get userLoggedIn(): UserModel {
@@ -59,7 +60,22 @@ export class AuthService {
         catchError( (err) => of(err.error.msg))
       );
 
-  } 
+  }
+
+  createUser = ( user: UserModel ) => {
+    return this._http.post<LogInResponse>(`${this._baseUrl}/login/new`, user)
+      .pipe(
+        tap( ( response: LogInResponse ) => {
+          if ( response.ok ) {
+            this.saveToken(response.token);
+            this._token = response.token;
+          }
+        }),
+        map( (response: LogInResponse) => response.ok ),
+        catchError( (err) =>  of(err.error.msg) )
+      )
+  }
+
   logOut = (): void => {
     this._user = undefined;
     this._token = undefined;

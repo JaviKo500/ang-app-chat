@@ -2,13 +2,12 @@
     <div class="col-12 text-center" *ngIf="userLoggedIn">
         <p-avatar [label]="getIconText()" shape="circle" class="cursor-pointer" routerLink="/inbox"></p-avatar>
         {{userLoggedIn.name |titlecase}}
-        <i class="pi pi-bolt" [ngClass]="getClassUserState()"></i>
         <i class="pi pi-sign-out" ngClass="ml-3 cursor-pointer" (click)="logOut()"></i>
     </div>
 </div>
 <div class="grid mt-1">
     <div class="col-12">
-        <p-scrollPanel styleClass="user-panel">
+        <p-scrollPanel styleClass="user-panel " >
             <app-user-card  *ngFor="let user of users" 
                             [user]="user">
             </app-user-card>

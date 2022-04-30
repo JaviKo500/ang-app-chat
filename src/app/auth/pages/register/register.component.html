@@ -1,17 +1,19 @@
 <div class="grid">
     <div class="col-12 ">
-        <form action="">
+        <form   [formGroup]="registerForm"
+                (ngSubmit)="createUser()">
             <div class="title">
                 <h1 class=" text-center">Sing up</h1>
             </div>
-            <!-- input username -->
+            <!-- input name -->
             <div class="mb-2">
                 <span class="p-input-icon-right">
                     <i class="pi pi-user"></i>
                     <input  type="text"
                             class="border-round" 
                             pInputText 
-                            placeholder="Username"/>
+                            placeholder="Name"
+                            formControlName="name"/>
                 </span>
             </div>
             <!-- input email -->
@@ -21,7 +23,8 @@
                     <input  type="email"
                             class="border-round" 
                             pInputText 
-                            placeholder="Email"/>
+                            placeholder="Email"
+                            formControlName="email"/>
                 </span>
             </div>
             <!-- input password -->
@@ -29,16 +32,18 @@
                 <p-password [inputStyleClass]="'border-round'"
                             [styleClass]="'border-round'"
                             [toggleMask]="true" 
-                            placeholder="Password">
+                            placeholder="Password"
+                            formControlName="password">
                 </p-password>
             </div>
             <!-- Login button -->
             <div class="flex justify-content-center">
                 <button pButton 
                         pRipple 
-                        type="button" 
+                        type="submit" 
                         label="Become a member" 
-                        class="p-button-rounded mt-2 w-full">
+                        class="p-button-rounded mt-2 w-full"
+                        [disabled]="registerForm.pending">
                 </button>
             </div>
         </form>

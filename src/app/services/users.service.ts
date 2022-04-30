@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment.prod';
 import { UsersResponse } from '../models/users-response.model';
 import { tap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { UserResponse } from '../models/user-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,13 @@ export class UsersService {
         map( (resp: UsersResponse) => resp.ok),
         catchError( (err) => of(err.error.msg))
       )
+  }
+
+  getUserById = ( userId: string) => {    
+    return this._http.get<UserResponse>(`${this._baseUrl}/users/${userId}`)
+      .pipe(
+        map( (resp:UserResponse) => resp.user ),
+        catchError( err => of(err.error.msg) )
+      );
   }
 }
