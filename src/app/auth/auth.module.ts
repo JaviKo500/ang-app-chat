@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 // Modules
 import { AuthRoutingModule } from './auth-routing.module';
+import { DirectivesModule } from '../directives/directives.module';
 import { PrimengModule } from '../primeng/primeng.module';
 
 // Components
@@ -21,6 +22,7 @@ import { RegisterComponent } from './pages/register/register.component';
   imports: [
     AuthRoutingModule,
     CommonModule,
+    DirectivesModule,
     PrimengModule,
     ReactiveFormsModule,
   ]

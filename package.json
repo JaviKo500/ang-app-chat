@@ -23,7 +23,6 @@
     "primeicons": "^5.0.0",
     "primeng": "^11.4.1",
     "rxjs": "~6.6.0",
-    "socket.io-client": "^4.5.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

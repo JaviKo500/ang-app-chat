@@ -1,3 +1,4 @@
+<p-toast position="top-center" key="tc"></p-toast>
 <div class="grid">
     <div class="col-12 ">
         <form   autocomplete="off"
@@ -7,18 +8,26 @@
                 <h1 class=" text-center">Welcome!</h1>
             </div>
             <!-- input email -->
-            <div class="mb-2">
+            <div class="">
                 <span class="p-input-icon-right">
                     <i class="pi pi-envelope"></i>
-                    <input  type="email"
+                    <input  id="email"
+                            type="email"
                             class="border-round" 
                             pInputText 
                             placeholder="Email"
                             formControlName="email"/>
                 </span>
             </div>
+            <!-- Error msg -->
+            <small  id="email"
+                    class="p-error fadein"
+                    error-msg
+                    [valid]="!userMsgFormService.isValidField('email')"
+                    [message]="userMsgFormService.emailErrorMsg">
+            </small>
             <!-- input password -->
-            <div class="mb-2">
+            <div class="mt-2">
                 <p-password [inputStyleClass]="'border-round'"
                             [styleClass]="'border-round'"
                             [toggleMask]="true" 
@@ -27,6 +36,13 @@
                             formControlName="password">
                 </p-password>
             </div>
+            <!-- Error msg -->
+            <small  id="email"
+                    class="p-error fadein"
+                    error-msg
+                    [valid]="!userMsgFormService.isValidField('password')"
+                    [message]="userMsgFormService.passErrorMsg">
+            </small>
             <!-- Login button -->
             <div class="flex justify-content-center">
                 <button pButton 

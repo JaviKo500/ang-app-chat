@@ -95,6 +95,7 @@ export class UserMessageComponent implements OnInit {
   }
 
   sendNewMessage = () => {
+    if(  this.newTextMessage.trim().length === 0 ) return;
     let message: MessageModel = { 
       from: this._authService.userLoggedIn.uid!,
       to: this.userTo?.uid!,

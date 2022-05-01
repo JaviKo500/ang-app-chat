@@ -6,14 +6,16 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { ToastModule } from 'primeng/toast';
 @NgModule({
   exports: [
+    AvatarModule,
     ButtonModule,
     CardModule,
     InputTextModule,
     PasswordModule,
     ScrollPanelModule,
-    AvatarModule,
+    ToastModule,
   ]
 })
 export class PrimengModule { }
