@@ -1,12 +1,12 @@
 <div class="w-full fadein flex justify-content-center" *ngIf="user">
     <div class="w-full user-message cursor-pointer mt-1 grid " [routerLink]="['/inbox/chat/', user.uid]" >
-        <div class="col-3 flex align-items-center">
+        <div class="col-3 md:col-3 flex align-items-center">
             <p-avatar [label]="getIconText()" shape="circle"></p-avatar>
         </div>
-        <div class="col-7 flex align-items-center">
+        <div class="col-5 md:col-7 flex align-items-center">
                 {{user.name | titlecase}}
         </div>
-        <div class="col-2 flex align-items-center">
+        <div class="col-1 md:col-2 flex align-items-center">
                 <i class="pi pi-circle-fill" [ngClass]="getClassUserState()"></i>
         </div>
     </div>

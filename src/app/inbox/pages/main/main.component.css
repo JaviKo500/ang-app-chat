@@ -1,3 +1,7 @@
 .center{
     height: 95vh;
 }
+
+.border-color {
+    border-top-color: aliceblue;
+}

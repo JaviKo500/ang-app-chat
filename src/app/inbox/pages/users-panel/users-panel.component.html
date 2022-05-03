@@ -2,7 +2,7 @@
     <div class="col-12 text-center" *ngIf="userLoggedIn">
         <p-avatar [label]="getIconText()" shape="circle" class="cursor-pointer" routerLink="/inbox"></p-avatar>
         {{userLoggedIn.name |titlecase}}
-        <i class="pi pi-sign-out" ngClass="ml-3 cursor-pointer" (click)="logOut()"></i>
+        <i class="pi pi-sign-out" ngClass="ml-1 md:ml-3 cursor-pointer" (click)="logOut()"></i>
     </div>
 </div>
 <div class="grid mt-1">
